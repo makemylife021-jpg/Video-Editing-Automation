@@ -93,7 +93,7 @@ typedef struct OutputParameters {
 
 
 typedef struct OutputStream {
-    AVCodec *codec;
+    const AVCodec *codec;
     AVCodecContext *codec_ctx;
     AVStream *stream;
     bool flushing, done_flush;

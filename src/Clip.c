@@ -469,8 +469,13 @@ int64_t compare_clips_sequential(Clip *f, Clip *s) {
     }
     double diff = difftime(f->vid_ctx->file_stats.st_mtime, s->vid_ctx->file_stats.st_mtime);
     if(diff < 0.01 && diff > -0.01) {
-        // if equal date & time
-        // compare start pts
+        // if equal date & time, clips from different files must not compare
+        // as equal: order them by filename so the sort stays stable
+        int name_cmp = strcmp(f->vid_ctx->url, s->vid_ctx->url);
+        if(name_cmp != 0) {
+            return name_cmp > 0 ? 1 : -1;
+        }
+        // same file: compare start pts
         return f->orig_start_pts - s->orig_start_pts;
     } else if(diff > 0) {
         return 1;
