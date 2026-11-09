@@ -1,4 +1,5 @@
 #include "RandomSplice.h"
+#include <time.h>
 
 /**
  * valgrind --leak-check=yes bin/examples/random-splice test-resources/sequence/out7.mov 30 48000 test-resources/sequence/ 300 80 40
@@ -204,8 +205,9 @@ int pick_frames(Sequence *seq, RandSpliceParams *par, int *start_index, int *end
         e_var = rand_range((-1)*(par->cut_len_var), par->cut_len_var);
     }
     int e = s + par->cut_len_avg + e_var;
-    if(e > seq_dur) {
-        e = seq_dur;
+    // last valid frame index is seq_dur - 1 (clip end is exclusive)
+    if(e >= seq_dur) {
+        e = seq_dur - 1;
     }
     Clip *sc = NULL, *se = NULL;
     find_clip_at_index(seq, s, &sc);

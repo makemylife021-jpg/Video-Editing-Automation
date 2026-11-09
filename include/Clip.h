@@ -11,6 +11,7 @@
 #include "VideoContext.h"
 #include "Timebase.h"
 #include <string.h>
+#include <time.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
