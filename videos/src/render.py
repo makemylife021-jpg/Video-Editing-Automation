@@ -206,8 +206,8 @@ def draw_device(fr, i, cx, cy, s, a):
 
 # ---------------------------------------------------------------- captions
 CAPTIONS = [
-    (0.2, 3.0, "An AI just designed three gadgets… and they actually work."),
-    (3.1, 7.4, "From one simple prompt each, Claude Fable 5.2 designed"),
+    (0.1, 3.3, "An AI designed three gadgets… and they actually work."),
+    (3.3, 7.4, "From one simple prompt each, Claude Fable 5.2 designed"),
     (7.4, 12.0, "a speakerphone, a voice-assistant hub, and a handheld virtual pet."),
     (12.1, 15.0, "The big leap is geometry."),
     (15.0, 20.0, "On a circuit-layout benchmark it jumped from 25% to 69%."),
