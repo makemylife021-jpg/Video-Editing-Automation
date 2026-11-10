@@ -216,6 +216,8 @@ for ts in (31.0, 32.0, 33.0):
     add(fx, ts, blip(2200))
 
 mix = drums * 0.8 + bass + arp + pad + fx
+if len(sys.argv) > 2 and sys.argv[2] == "fx":  # SFX stem only (for layering over another song)
+    mix = fx
 # soft master: fade in/out, tanh limiter
 mix *= np.minimum(1, t_all / 0.05)
 mix *= np.minimum(1, (DUR - t_all) / 1.5)
